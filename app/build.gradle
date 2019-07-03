@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "android.com.test"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //根据需要 自行选择添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+//    buildTypes {
+//        release {
+//            manifestPlaceholders = [
+//                    //AG3K72I6PJUX 属于应用"test"独有的 Android AppKey, 用于配置SDK
+//                    MTA_APPKEY:"AG3K72I6PJUX",
+//                    //标注应用推广渠道用以区分新用户来源，可填写如应用宝，豌豆荚等
+//                    MTA_CHANNEL:"渠道名称"
+//            ]
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//        debug{
+//            manifestPlaceholders = [
+//                    //AG3K72I6PJUX 属于应用"test"独有的 Android AppKey, 用于配置SDK
+//                    MTA_APPKEY:"AG3K72I6PJUX",
+//                    //标注应用推广渠道用以区分新用户来源，可填写如应用宝，豌豆荚等
+//                    MTA_CHANNEL:"渠道名称"
+//            ]
+//        }
+//    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
+    //腾讯
+    //MTA主包
+//    compile 'com.qq.mta:mta:3.4.7-Release'
+//    //mid jar包 必须添加
+//    compile 'com.tencent.mid:mid:4.06-Release'
+//
+////可视化埋点的相关jar包 （根据需要添加），可视化埋点的版本号，和必须和当前MTA的版本号必须匹配使用 需要在配置文件中增加配置，具体请参考 高级功能中可视化埋点的接入。
+//    compile 'com.qq.visual:visual:3.4.0.1-beta'
+    //百度
+//    implementation 'com.baidu.mobstat:mtj-sdk:latest.integration'
+//    compile 'com.baidu.mobstat:mtj-sdk-circle:latest.integration'
+}
+repositories {
+    jcenter()
+}
